@@ -23,7 +23,7 @@ parser.add_argument('-d', action='store_true',
                     help='Draw and show camera feed')
 parser.add_argument('-p', type=str, default="/dev/video0", help='Video port')
 parser.add_argument('-w', type=str,
-                    default="new_save_2.h5", help='Path to weight file')
+                    default="20180821weights.h5", help='Path to weight file')
 args = parser.parse_args()
 
 # Import the model
@@ -37,12 +37,9 @@ labelnames = ["rock", "paper", "scissor"]
 #  Initialize the grabber thread
 th = th.ThreadedGrabber(img_shape=img_shape, port=args.p)
 
-
 timer = time.time()
 
-
 while(True):
-
     # If timer flag is enabled
     if args.t:
         print(time.time()-timer)

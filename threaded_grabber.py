@@ -13,11 +13,14 @@ import threading
 
 class ThreadedGrabber():
     """
-    Using Threading library empties the V4L buffer in
+    Using the Threading library empties the V4L buffer in
     the OpenCV VideoCapture object and returns the last
-    copy when queried with
+    copy when queried with:
 
     copy_ready_for_inference, original_image = obj.get()
+
+    copy_ready_for_inference is centered around the mean and
+    reshaped for inference.
     """
     def __init__(self, img_shape=[64*3, 48*3, 3], port="/dev/video0"):
         self.cap = cv2.VideoCapture(port)
